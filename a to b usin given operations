@@ -1,0 +1,42 @@
+// program to find if we can make b from a using operations like 2*a 10*a+1
+#include <iostream>
+#include <vector>
+using namespace std;
+bool func(long x,long b,vector<int> &arr);
+int main(){
+    long long a,b;
+    cin>>a>>b;
+    vector<int> arr;
+    if(func(a,b,arr)){
+        cout<<"YES";
+        for(int i=0;i<arr.size();i++){
+            cout<<arr[i]<<" ";
+        }
+    }
+    else{
+        cout<<"NO";
+    }
+    
+}
+bool func(long x,long b,vector<int> &arr){
+    if(x>b){
+        return false;
+    }
+    
+    arr.push_back(x);
+    if (x==b){
+        return true;
+    }
+    bool flag=false;
+    flag=func(2*x,b,arr);
+    if(flag){
+        return true;
+    }
+    
+    flag=func(10*x+1,b,arr);
+    if(flag){
+        return true;
+    }
+    arr.pop_back();
+    return false;
+}
