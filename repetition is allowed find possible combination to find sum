@@ -1,0 +1,42 @@
+// Online C++ compiler to run C++ program online
+#include <iostream>
+
+using namespace std;
+int solve(int rs,int i,int arr[],int n);
+int main() {
+    int n;
+    cin>>n;
+    int arr[20];
+    for(int i=0;i<n;i++){
+        cin>>arr[i];
+    }
+    int s;
+    cin>>s;
+    int ans=solve(s,0,arr,n);
+    cout<<ans;
+
+    return 0;
+}
+int solve(int rs,int i,int arr[],int n){
+    int a=0;
+    if(i==n){
+        if(rs==0)
+        return 1;
+        else
+        return 0;
+    }
+    else {
+        
+        for(int j=0;j<=(rs/arr[i]);j++){
+            
+            a+=solve(rs-j*arr[i],i+1,arr,n);
+            
+        }
+        
+        return a;
+    }
+
+    
+    
+    
+}
